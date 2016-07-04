@@ -1,0 +1,156 @@
+\documentclass[SoftwareQuality.tex]{subfiles}
+
+\begin{document}
+
+\section{Why do we concern?} 
+
+
+
+\subsection*{costs of failures}
+\begin{frame}{Relative costs of Software failures} 
+How expensive are failures depending on the time they are recovered:
+\vfill
+\begin{tabular}{l r}
+ while developing a feature & \visible<2->{ 1}\\ 
+  \visible<3-> {when developer tests the completed feature}  & \visible<4->3\\
+  \visible<5-> {while integration testing}   & \visible<6->{10}\\
+  \visible<7-> {while QA testing}  & \visible<8->{100}\\
+  \visible<9-> {in production} &   \visible<10->{1000}\\
+\end{tabular} 
+\end{frame}
+
+\subsection*{problems of manual tests}
+\begin{frame}{Why are manual tests flaky?} 
+Testing software manually has some serious influences:
+\vfill 
+
+\visible<2->{
+Software must be ready to run.
+}
+
+\vfill 
+\visible<3->{ Tester needs knowledge about complete Application. 
+\\\hspace{3em}what is desired behavior? 
+\\\hspace{3em} what is a failure?
+}
+\vfill 
+\visible<4->{ 
+ Testing failure handling my be hard.
+}
+\vfill 
+\visible<5->{ 
+ Testing is slow.
+}
+
+\vfill 
+\visible<6->{ 
+Testing only during business hours.
+}
+
+\vfill 
+\visible<7->{ 
+ Testing is boring.
+ }
+\end{frame}
+
+\subsection*{alternative to manual tests}
+\begin{frame}{How to make it better?} 
+Computers are good in:
+\begin{itemize}
+	\item  doing things that have clear input and output
+	\item  doing things that have rules to make decisions
+	\item  repeating tasks
+\end{itemize}
+\vfill
+
+\visible<2->{
+Tests 
+\begin{itemize}
+	\item  have  clear input and output
+	\item  have rules when passing or failing
+	\item  must be repeated regularly
+\end{itemize}}
+\vfill
+
+\visible<3->{ \Large Automate your tests!}
+\end{frame}
+
+\subsection*{level of test}
+\begin{frame}{What kind of test should we automate?} 
+
+\textbf{Application Test}
+\begin{itemize}
+\item testing the Application as a whole.
+\item act as the (end-) user.
+\item control via (graphical) user interface.
+\item many tests needed to cover all functionality.
+\item some functionality is implicitly tested multiple times.
+\item any desired change may break multiple test.
+\item failing test gives almost no information about the cause of the fail.
+\item proves that all modules work together.
+\item somewhat faster that manual tests.
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{What kind of test should we automate?} 
+
+\textbf{Module Test}
+\begin{itemize}
+\item testing an isolated Module.
+\item control via Module API.
+\item many tests needed to cover all functionality of the module.
+\item some functionality is implicitly tested multiple times.
+\item any desired change of the module may break multiple test.
+\item failing test gives almost no information about the cause of the fail.
+\item proves that all units work together.
+\item somewhat faster that Application Tests.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{What kind of test should we automate?} 
+
+\textbf{UnitTest}
+\begin{itemize}
+\item testing an isolated Unit.
+\item testing a single assumption about the Unit.
+\item control via Unit API.
+\item few tests per unit needed to cover all functionality.
+\item \textit{no} functionality is implicitly tested multiple times.
+\item failing test gives detailed information about the cause of the fail.
+\item very fast.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Conclusion} 
+Any level of test can be automated.
+\vfill
+
+\textbf{Applications an Module  Test}
+\begin{itemize}
+\item need complex tooling
+\item run late in the development process
+\item are fragil
+\end{itemize}
+
+\textbf{UnitTest}
+\begin{itemize}
+\item run early in the development process
+\item are stable
+\end{itemize}
+\vfill
+
+With high UnitTest coverage less higher level  tests are needed.
+
+\end{frame}
+
+\begin{frame}{Why don't we write automated tests?} 
+\pause
+\visible<2>{
+\includegraphics[scale=.5]{excuses}
+}
+\end{frame}
+\end{document}

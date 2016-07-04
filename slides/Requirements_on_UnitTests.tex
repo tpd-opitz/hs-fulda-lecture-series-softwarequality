@@ -1,0 +1,84 @@
+\documentclass[SoftwareQuality.tex]{subfiles}
+
+\begin{document}
+
+\section{Requirements on UnitTests}
+
+\subsection*{RTFM}
+\begin{frame}{What is a good UnitTest?} 
+\Large
+\begin{itemize}
+\item  R\visible<2->{eadable}
+\item  T\visible<3->{rustworthy}
+\item  F\visible<4->{ast}
+\item  M\visible<4->{aintainable}
+\end{itemize}
+\end{frame}
+
+
+\subsection*{R as Readable}
+\begin{frame}{What what does Readable mean?} 
+\begin{itemize}
+\item   what is tested
+	\\{\footnotesize
+		test name expresses preconditions, desired result
+	}
+\item   short
+	\\{\footnotesize 
+		put common preparations in separate methods
+	}
+\item   what properties of input are important
+	\\{\footnotesize 
+		choose variable names carefully
+		\\declare and initialize input variables explicitly
+	}
+\item   what properties of output are important
+	\\{\footnotesize 
+		choose variable name carefully\\
+		simple verification (methods with ''speaking names'')
+	}
+\end{itemize}
+\end{frame}
+
+\subsection*{T as Trustworthy}
+\begin{frame}{What what does Trustworthy mean?} 
+	\begin{itemize}
+		\item   business requirement
+			\\{\footnotesize
+				Does our code implement a business requirement? 
+			}
+		\item   technical  	
+			\\{\footnotesize 
+				does the test really execute the (right) part of the production code?\\
+				when failing, does the test fail for the right reason?
+				}
+			\begin{itemize}
+				\item replace dependencies
+				\item ''test first''
+				\item (almost) no custom logic in tests
+			\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\subsection*{F as Fast}
+\begin{frame}{What what does Fast mean?} 
+	\begin{itemize}
+		\item  Tests can be executed frequently without delaying work (each safe at best).
+		\item  sophisticated and potentially slow logic in dependencies must be replaced.
+	\end{itemize}
+\end{frame}
+
+\subsection*{M as Maintainable}
+\begin{frame}{What what does Maintainable mean?} 
+	\begin{itemize}
+		\item  stable against changes in other units
+		\\{\footnotesize 
+				replace dependencies
+				}
+		\item  stable against changes in tested unit
+		\\{\footnotesize 
+				test single assumption
+				}
+	\end{itemize}
+\end{frame}
+\end{document}
