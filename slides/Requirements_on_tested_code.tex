@@ -6,5 +6,82 @@
 
 \begin{frame}{Testability of production code} 
 	Quality of Code (as by means of ''Clean Code'') influences quality of Tests (as by means of RTFM-- requirements)
+	\vfill
+	
+	Most important ''Clean Code'' rules:
+	\vfill
+	\begin{itemize}
+	\item Separation of concerns 
+	\item single resposibility
+	\\{\footnotesize 
+		object creation is \textbf{not} concern of business logic
+	}
+	\vfill
+	\item Tell! Don't ask.
+	\item Law of Demeter (Don't talk to strangers)
+	\\{\footnotesize 
+		avoid ''message chaining''
+	}
+	\vfill
+	\end{itemize}
 \end{frame}
+
+\subsection{Isolating an Unit}
+\begin{frame}{Testability of production code} 
+	\includegraphics<1>[width=\linewidth]{test-big-block}
+    \includegraphics<2>[width=\linewidth]{test-transparent-block}
+    \includegraphics<3>[width=\linewidth]{test-transparent-block-isolated}
+    \includegraphics<4>[width=\linewidth]{test-environment}
+\end{frame}
+
+
+\begin{frame}{Types of Replacements} 
+	\begin{itemize}
+	\item Stub
+		\begin{itemize}
+			\item empty implementation of an interface 
+		\end{itemize}
+		\vfill
+	\item Fake
+		\begin{itemize}
+			\item alternative implementation of an interface or extension of an existing implementation.
+			\item extremely simplified behavior (no logic)
+		\end{itemize}
+	\item Mock
+		\begin{itemize}
+			\item ''enhanced'' Fake
+			\item configurable behavior
+			\item verification of method calls and the parameters given
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+
+\subsection{Enabling Isolation}
+\begin{frame}{What enables dependency replacement?} 
+	\begin{itemize}
+		\item separate dependency instantiation from business logic
+		\item no call to \texttt{new} operator
+		\item introduce ''seams''
+			\begin{itemize}
+				\item dependency injection
+				\item low visibility getter
+			\end{itemize}
+		\item no \texttt{static} (public) methods
+		\item no \texttt{final} (public) methods
+		\item avoid Singelton pattern (not singelton as a concept)
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{write ''Clean Code''\footnotemark[1]} 
+	\begin{itemize}
+		\item programming against interfaces
+		\item SoC/SRP (Feature envy)
+		\item Law of Demeter
+		\item DRY
+		\item same level of abstraction
+	\end{itemize}
+	\footnotetext[1]{''Clean Code'' by Robert C Martin, ISBN-13: 978-0132350884\vspace*{2em}}
+\end{frame}
+
 \end{document}

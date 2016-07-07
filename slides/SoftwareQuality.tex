@@ -23,18 +23,19 @@
 \usefonttheme{professionalfonts} % using non standard fonts for beamer
 %\usefonttheme{serif} % default family is serif
 %\definecolor{bulgarianrose}{rgb}{0.28, 0.02, 0.03}
-%\definecolor{byzantium}{rgb}{0.44, 0.16, 0.39}
+\definecolor{darkgreen}{rgb}{0.0, 0.16, 0.0}
 \usepackage{color}
 %\usepackage[pdfborder={0 0 0},colorlinks=false]{hyperref}
 \lstloadlanguages{Java}
 \lstset{numbers=left
  , numberstyle=\tiny
+ ,  basicstyle=\tiny
  , language=Java
  , numbersep=5pt
  , identifierstyle=\color{black}
  , keywordstyle=\color{blue}
  , stringstyle=\color{red}
- , commentstyle=\color{green}
+ , commentstyle=\color{darkgreen}
  , basicstyle=\footnotesize\ttfamily
  , classoffset=0
  , morekeywords={true,false}
@@ -44,8 +45,10 @@
  , keywordstyle=\color{blue}\bfseries
  , classoffset=0
  , frame=tRBl
+ , captionpos=n
 }
 \definecolor{coolblack}{rgb}{0.0, 0.18, 0.39}
+\definecolor{byzantium}{rgb}{0.55, 0.18, 0.39}
 \setbeamersize{text margin left=15pt,text margin right=20pt}
 \setlength{\rightmargin}{30pt}
 \setbeamertemplate{itemize items}{\color{coolblack}{$\blacksquare$}}
@@ -61,7 +64,6 @@
 
 \useoutertheme{infolines}
 
-
 \beamersetuncovermixins{\opaqueness<1>{25}}{\opaqueness<2->{15}}
 \setbeamertemplate{footline}
 {
@@ -71,21 +73,24 @@
   \begin{beamercolorbox}[ht=2.25ex,left]{author in head/foot}%
   \setlength\fboxrule{0pt}%
   \hspace{8pt}\fbox{\includegraphics[height=.6cm]{opitz-consulting-logo}}  %
-\color{gray}{\tiny\today \hfill%
+\color{gray}{\tiny\insertdate \hfill%
  \insertshorttitle\hfill%
     \textcopyright OPITZ CONSULTING GmbH  \hfill \insertframenumber{} / \inserttotalframenumber}%\hfill
   \end{beamercolorbox}
 }%
   \vskip3ex%
 }{}
-
+%\addbeamertemplate{headerline}{
+%}{}
 
 \newcommand{\whitepause}{\addtocounter{beamerpauses}{-1}\pause\color<+>{white}}
 
+\setbeamersize{text margin left=15pt}
+\setbeamersize{text margin right=15pt}
 \begin{document}
 \title{Software Quality with JUnit and Mockito}  
 \author{Thomas Papendieck}
-\date{\today} 
+\date{July 8th 2016} 
 
 \begin{frame}%[plain]
 \tikz[overlay, remember picture] {
@@ -129,8 +134,14 @@
 \frametitle{Agenda}\tableofcontents
 \end{frame} 
 
+
 \subfile{Why_do_we_concern}
 
 \subfile{Requirements_on_UnitTests}
+
 \subfile{Requirements_on_tested_code}
+
+
+\subfile{How_to_write_unittests}
+
 \end{document}

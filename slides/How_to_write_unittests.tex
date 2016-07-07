@@ -1,0 +1,86 @@
+\documentclass[SoftwareQuality.tex]{subfiles}
+\begin{document}
+
+\section{required tooling}
+\begin{frame}{starter kit for Java developers} 
+	\begin{itemize}
+		\item IDE including testplugin (eclipse + infinitest / Netbeans + ?)  
+		\item build -- tool (maven / gradle {\color{gray}/ ant})
+		\item SCM (git  {\color{gray}/ subversion})
+		\item testing framework (JUnit / NUnit)
+		\item mocking framwork (Mockito)
+	\end{itemize}
+\end{frame}
+
+
+\defverbatim[colored]\makeset{
+\begin{lstlisting}[ basicstyle=\tiny]
+class PlainOldJavaClass{
+   @Test // marks a method so that its been called by JUnit
+   public // test methods must be public
+   void  // test methods must not return anything
+   testedMethod__preconditions__expectedBehavior() // no parameters
+   {
+     // arrange: create and configure dependencies and variables
+     int input = 4;
+     int expectedResult = 2;
+     
+     // act: create tested unit (if possible)  and call tested method.
+     int calculatedResult = (int) Math.sqr(input);
+     
+     // assert: check the Result by calling one of JUnits assert methods.
+     // the assert method throws an exception when the check fails.
+     assertEquals("square root of 4", // always describe what you check.
+                  expectedResult,
+                  calculatedResult);  
+   }
+}
+\end{lstlisting}
+}
+\begin{frame}{Writing a JUnit Test} 
+\makeset
+\end{frame}
+\defverbatim[colored]\makeset{
+\begin{lstlisting}[ basicstyle=\tiny]
+class PlainOldJavaClass{
+   @Test 
+   public void  testedMethod__preconditions__expectedBehavior() {
+     // create mock
+     MyInterfaceOrClass mockObject = mock(MyInterfaceOrClass.class);
+     //create a spy     
+     MyClass spyObject = spy(new MyClass());
+     // configure behavior:
+     doThrow(new RuntimeException("should not be called")).when(mockObject).anyMethod();
+     doReturn(mockObject).thenReturn(null).when(spyObject).getMyInterfaceOrClass();
+     
+     // alternative for non void methods:
+     .when ( spyObject.getMyInterfaceOrClass() ) .thenReturn(mockObject,null,mockObject);     
+     
+     // check call of method
+     verify(spyObject).expectedMethodCall(mockObject,any(OtherInterfaceOrClass.class));
+   }
+}
+\end{lstlisting}
+}
+\begin{frame}{Using Mockito} 
+\makeset
+\end{frame}
+
+\begin{frame}{Test Driven Development} 
+When developing your software follow this cycle:
+\vfill
+\begin{itemize}
+\item {\color{red}Test - write enough of a single test so that it fails.\\
+   {\footnotesize not compiling means fail...}}
+\vfill
+\item {\color{green}Implement - change the production code to make the test compile and pass.\\
+   {\footnotesize Use the simplest possible solution.}}
+\vfill
+\item {\color{green}Refactor - change the production code to make it ''clean''.\\
+   {\footnotesize Resolve code duplications, introduce design patterns, but no test must break at the end.\\Also refactor your test code.}}
+\vfill
+\end{itemize}
+
+
+\end{frame}
+\end{document}

@@ -1,5 +1,6 @@
 \documentclass[SoftwareQuality.tex]{subfiles}
 
+
 \begin{document}
 
 \section{Why do we concern?} 
@@ -11,11 +12,11 @@
 How expensive are failures depending on the time they are recovered:
 \vfill
 \begin{tabular}{l r}
- while developing a feature & \visible<2->{ 1}\\ 
-  \visible<3-> {when developer tests the completed feature}  & \visible<4->3\\
-  \visible<5-> {while integration testing}   & \visible<6->{10}\\
-  \visible<7-> {while QA testing}  & \visible<8->{100}\\
-  \visible<9-> {in production} &   \visible<10->{1000}\\
+ while developing a feature & { 1}\\ 
+  {when developer tests the completed feature}  & \visible<2->3\\
+  {while integration testing}   & \visible<3->{10}\\
+  {while QA testing}  & \visible<4->{100}\\
+  {in production} &   \visible<5->{1000}\\
 \end{tabular} 
 \end{frame}
 
@@ -75,10 +76,22 @@ Tests
 \visible<3->{ \Large Automate your tests!}
 \end{frame}
 
-\subsection*{level of test}
-\begin{frame}{What kind of test should we automate?} 
+\subsection*{What kind of test should we automate?}
+\begin{frame}{Test Level} 
 
-\textbf{Application Test}
+\begin{itemize}
+	\item Application Test
+		\begin{itemize}
+			\item rejection check {\color{gray}formaly known as \textit{acceptance test}}.
+			\item performance/stress test
+		\end{itemize}
+	\item Module Test
+	\item Unit Test
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Application Test} 
 \begin{itemize}
 \item testing the Application as a whole.
 \item act as the (end-) user.
@@ -88,15 +101,13 @@ Tests
 \item any desired change may break multiple test.
 \item failing test gives almost no information about the cause of the fail.
 \item proves that all modules work together.
-\item somewhat faster that manual tests.
+%\item somewhat faster that manual tests.
 \end{itemize}
 
 \end{frame}
 
 
-\begin{frame}{What kind of test should we automate?} 
-
-\textbf{Module Test}
+\begin{frame}{Module Test} 
 \begin{itemize}
 \item testing an isolated Module.
 \item control via Module API.
@@ -110,9 +121,7 @@ Tests
 
 \end{frame}
 
-\begin{frame}{What kind of test should we automate?} 
-
-\textbf{UnitTest}
+\begin{frame}{UnitTest} 
 \begin{itemize}
 \item testing an isolated Unit.
 \item testing a single assumption about the Unit.
@@ -126,24 +135,29 @@ Tests
 \end{frame}
 
 \begin{frame}{Conclusion} 
-Any level of test can be automated.
+Any level of test can be automated, but:
 \vfill
 
 \textbf{Applications an Module  Test}
 \begin{itemize}
-\item need complex tooling
 \item run late in the development process
+\item need tooling complex API
 \item are fragil
 \end{itemize}
 
 \textbf{UnitTest}
 \begin{itemize}
 \item run early in the development process
+\item need tooling with simple API
 \item are stable
 \end{itemize}
-\vfill
+%\vfill
 
 With high UnitTest coverage less higher level  tests are needed.
+
+UnitTests check the functionality.
+
+Higher level tests check that all works together smoothly.
 
 \end{frame}
 
@@ -152,5 +166,16 @@ With high UnitTest coverage less higher level  tests are needed.
 \visible<2>{
 \includegraphics[scale=.5]{excuses}
 }
+\end{frame}
+
+\begin{frame}{UnitTests as a skill} 
+
+{\Huge
+Writing UnitTests is a skill that needs to be trained constantly.}
+\vfill
+Next chance: 
+\\Global Day of Coderetreat Oktober 22nd at HS Fulda\\
+\footnotesize\url{http://coderetreat.org/events/global-day-of-coderetreat-2016-fulda-germany}
+
 \end{frame}
 \end{document}
